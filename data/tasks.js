@@ -1,6 +1,6 @@
 const tasks = [
     {
-        task: "teste",
+        description: "teste",
         completed: true
     }
 ];
