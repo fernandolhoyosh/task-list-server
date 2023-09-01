@@ -1,28 +1,33 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const taskList = require('../data/tasks');
+const taskList = require("../data/tasks");
 
-const serviceAddTask = require('../modules/addTask');
+const serviceAddTask = require("../modules/addTask");
+const serviceDeleteTask = require("../modules/deleteTask");
 const addTask = serviceAddTask;
+const deleteTask = serviceDeleteTask;
 
-router.post('/add/:task', (req, res) => {
-    const newTask = {
-        task: req.params.task,
-        completed: false,
-    }
-    addTask(taskList, newTask);
-    console.log('Se ha añadido una nueva tarea a la lista:', newTask.task);
-    console.log(taskList);
-    res.status(201).send(`Task successfully added`);
+router.post("/add/:task", (req, res) => {
+  const taskName = req.params.task;
+  addTask(taskList, taskName)
+    .then((response) => {
+      res.status(201).send(response);
+      console.log("New task added:", response.newTask);
+      console.log(taskList);
+    })
+    .catch((error) => {
+      res.status(400).send(`error 400`);
+    });
 });
 
-router.delete('/delete', (req, res) => {
-
+router.delete("/delete/:task", (req, res) => {
+  const task = req.params.task;
+  deleteTask(taskList, task)
+    .then((response) => res.status(200).send(response))
+    .catch((error) => res.status(404).send(error));
 });
 
-router.put('/update', (req, res) => {
-
-});
+router.put("/update", (req, res) => {});
 
 module.exports = router;
