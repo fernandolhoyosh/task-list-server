@@ -17,4 +17,9 @@ router.get('/pending', (req, res) => {
     res.status(200).json(tasksIncomplete(taskList));
 });
 
+router.get('/all', (req, res) => {
+    console.log(`Enviando lista de tareas al cliente`);
+    res.status(200).json(taskList);
+});
+
 module.exports = router;
