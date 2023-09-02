@@ -11,13 +11,16 @@ GET http://localhost:3000/tasks/completed
 GET http://localhost:3000/tasks/pending
 
 ### Ruta para crear una tarea en la lista
+### añadir parametro nombre de tarea para guardar
 
 POST http://localhost:3000/tasks/add
 
 ### Ruta para eliminar una tarea existente en la lista por ID
+### añadir parametro id a eliminar
 
 DELETE http://localhost:3000/tasks/delete/
 
 ### Ruta para actualizar el nombre y el estado de una tarea existente de la lista por ID
+### query params [name, completed] para actualizar nombre de tarea y estado
 
 PUT http://localhost:3000/tasks/update/1?name=task1&completed=false
