@@ -3,10 +3,9 @@ const router = express.Router();
 
 const taskList = require("../data/tasks");
 
-const serviceAddTask = require("../modules/addTask");
-const serviceDeleteTask = require("../modules/deleteTask");
-const addTask = serviceAddTask;
-const deleteTask = serviceDeleteTask;
+const {addTask} = require("../modules/addTask");
+const {deleteTask} = require("../modules/deleteTask");
+const {updateTask} = require('../modules/updateTask');
 
 router.post("/add/:task", (req, res) => {
   const taskName = req.params.task;
@@ -21,13 +20,19 @@ router.post("/add/:task", (req, res) => {
     });
 });
 
-router.delete("/delete/:task", (req, res) => {
-  const task = req.params.task;
-  deleteTask(taskList, task)
+router.delete("/delete/:id", (req, res) => {
+  const idTask = req.params.id;
+  deleteTask(taskList, idTask)
     .then((response) => res.status(200).send(response))
     .catch((error) => res.status(404).send(error));
 });
 
-router.put("/update", (req, res) => {});
+router.put("/update/:id", (req, res) => {
+    const idTask = req.params.id;
+    const {name, completed} = req.query;
+    updateTask(taskList, idTask, name, completed)
+        .then(response => res.status(200).send(response))
+        .catch(error => res.status(404).send(error));
+});
 
 module.exports = router;
