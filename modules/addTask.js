@@ -18,4 +18,4 @@ const addTask = (taskslist, taskName) => {
     });
 }
 
-module.exports = addTask;
+module.exports = {addTask};

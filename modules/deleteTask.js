@@ -23,4 +23,4 @@ const deleteTask = (tasklist, idTaskDelete) => {
   });
 };
 
-module.exports = deleteTask;
+module.exports = {deleteTask};
