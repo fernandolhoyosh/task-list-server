@@ -1,0 +1,23 @@
+### Ruta para mostrar todas las tareas guardadas
+
+GET http://localhost:3000/tasks/all
+
+### Ruta para mostrar las tareas completadas
+
+GET http://localhost:3000/tasks/completed
+
+### Ruta para mostrar las tareas pendientes
+
+GET http://localhost:3000/tasks/pending
+
+### Ruta para crear una tarea en la lista
+
+POST http://localhost:3000/tasks/add
+
+### Ruta para eliminar una tarea existente en la lista por ID
+
+DELETE http://localhost:3000/tasks/delete/
+
+### Ruta para actualizar el nombre y el estado de una tarea existente de la lista por ID
+
+PUT http://localhost:3000/tasks/update/1?name=task1&completed=false
