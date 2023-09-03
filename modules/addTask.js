@@ -8,8 +8,7 @@ const addTask = (taskslist, taskName) => {
                 message: "the task cannot be empty",
                 value: taskName,
             });
-        }
-            
+        }    
             const taskFilter = taskslist.find(task => task.description === taskNameTrim);
         if (taskFilter) {
             reject({
@@ -19,9 +18,7 @@ const addTask = (taskslist, taskName) => {
                 taskFilter,
             });
         } else {
-            
             const idTask = String(taskslist.length === 0 ? 1 : parseInt(taskslist[taskslist.length-1].id) + 1);
-            
             const newTask = {
                 id: idTask,
                 description: taskNameTrim,
