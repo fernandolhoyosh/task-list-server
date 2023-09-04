@@ -14,7 +14,7 @@ POST http://localhost:3000/tasks/add/task1
 
 - Eliminar tareas de la lista pasando el ID de la tarea como parametro. Ejemplo de uso para borrar 'task1':
 
-POST http://localhost:3000/tasks/delete/1
+DELETE http://localhost:3000/tasks/delete/1
 
 - Actualizar el nombre y/o el estado de una tarea parsando como paarmetro el ID de la tarea y el nombre y estado por query params. Ejemplo:
 
