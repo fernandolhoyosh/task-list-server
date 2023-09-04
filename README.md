@@ -28,6 +28,6 @@ GET http://localhost:3000/tasks/completed
 
 GET http://localhost:3000/tasks/pending
 
-- Ver todas la tareas almecenadas:
+- Ver todas la tareas almacenadas en la lista:
 
 GET http://localhost:3000/tasks/all
