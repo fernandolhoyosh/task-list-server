@@ -36,12 +36,11 @@ router.delete("/delete/:id", (req, res) => {
 });
 
 router.put("/update/:id", validateErrors, (req, res) => {
-    const idTask = req.params.id;
+    /* const idTask = req.params.id;
     const {description, completed} = req.body;
-    console.log("ENDPOINT",req.body)
     updateTask(taskList, idTask, description, completed)
         .then(response => res.status(response.code).send(response))
-        .catch(error => res.status(error.code).send(error));
+        .catch(error => res.status(error.code).send(error)); */
 });
 
 module.exports = router;

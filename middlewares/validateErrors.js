@@ -72,7 +72,19 @@ const validateErrors = (req, res, next) => {
 
   if (req.method === 'PUT') {
 
-    let control = 0;
+    const lenghtObject = Object.keys(task).length;
+
+    if (lenghtObject === 1) {
+      
+    }
+    else if (lenghtObject === 2) {
+      
+    }
+
+
+
+   /*  let control = 0;
+    let key = false;
 
     if ('description' in task) {
       control ++
@@ -100,8 +112,8 @@ const validateErrors = (req, res, next) => {
         message: "invalid attributes",
         validAttributes: { description: "String", completed: "Boolean" },
       });
-    }
-  }
+    }*/
+  } 
   next();
 };
 
