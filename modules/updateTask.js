@@ -10,18 +10,13 @@ const updateTask = (taskList, idTask, newTaskName, status) => {
       });
     } else {
       newTaskName ? (taskUpdate.description = newTaskName.trim()) : taskUpdate.description;
-      if (status) {
-        if (status !== "true" && status !== "false") {
-          reject({
-            status: "bad request",
-            code: 400,
-            message: "Only the status of the task can be entered as true or false",
-            value: status
-          });
-        } else {
-          taskUpdate.completed = JSON.parse(status);
-        }
-      }
+      console.log("ESTATUS SERVICE UPDATE",status)
+      const test = status;
+      if (status === false || status === true) {
+        console.log("VALUE TEST", test)
+      taskUpdate.completed = test;
+      } else  taskUpdate.completed;
+      console.log("SERVICEUPDATE", taskUpdate.completed)
       resolve({
         status: "OK",
         code: 200,
