@@ -1,15 +1,8 @@
 const addTask = (taskslist, taskName) => {
     return new Promise((resolve, reject) => {
-        const taskNameTrim = taskName.trim();
-        if (!taskNameTrim) {
-            return reject({
-                status:"bad request",
-                code: 400,
-                message: "the task cannot be empty",
-                value: taskName,
-            });
-        }    
-            const taskFilter = taskslist.find(task => task.description === taskNameTrim);
+       
+        const taskFilter = taskslist.find(task => task.description === taskName);
+
         if (taskFilter) {
             reject({
                 status:"conflict found",
@@ -21,7 +14,7 @@ const addTask = (taskslist, taskName) => {
             const idTask = String(taskslist.length === 0 ? 1 : parseInt(taskslist[taskslist.length-1].id) + 1);
             const newTask = {
                 id: idTask,
-                description: taskNameTrim,
+                description: taskName,
                 completed: false,
             }    
             taskslist.push(newTask);
