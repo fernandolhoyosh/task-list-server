@@ -5,6 +5,7 @@ const listEditRouter = require('../routers/list-edit-router');
 const app = express();
 const port = 3000;
 
+app.use(express.json());
 app.use('/tasks', listViewRouter);
 app.use('/tasks', listEditRouter);
 
