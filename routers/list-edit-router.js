@@ -1,14 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
+//Importo la lista de tareas
 const taskList = require("../data/tasks");
 
+// Importo middleware de validacion de errores para metodos POST y PUT
+const {validateErrors} = require("../middlewares/validateErrors");
+
+// Importo modulos para añadir, eliminar y actualizar tareas
 const {addTask} = require("../modules/addTask");
 const {deleteTask} = require("../modules/deleteTask");
 const {updateTask} = require('../modules/updateTask');
 
-router.post("/add/:task", (req, res) => {
-  const taskName = req.params.task;
+
+// Defino las rutas
+
+router.post("/add", validateErrors, (req, res) => {
+  const taskName = req.body.description;
   addTask(taskList, taskName)
     .then((response) => {
       res.status(response.code).send(response);
@@ -27,10 +35,11 @@ router.delete("/delete/:id", (req, res) => {
     .catch((error) => res.status(error.code).send(error));
 });
 
-router.put("/update/:id", (req, res) => {
+router.put("/update/:id", validateErrors, (req, res) => {
     const idTask = req.params.id;
-    const {name, completed} = req.query;
-    updateTask(taskList, idTask, name, completed)
+    const {description, completed} = req.body;
+    console.log("ENDPOINT",req.body)
+    updateTask(taskList, idTask, description, completed)
         .then(response => res.status(response.code).send(response))
         .catch(error => res.status(error.code).send(error));
 });
