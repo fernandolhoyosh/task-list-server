@@ -10,13 +10,9 @@ const updateTask = (taskList, idTask, newTaskName, status) => {
       });
     } else {
       newTaskName ? (taskUpdate.description = newTaskName.trim()) : taskUpdate.description;
-      console.log("ESTATUS SERVICE UPDATE",status)
-      const test = status;
       if (status === false || status === true) {
-        console.log("VALUE TEST", test)
-      taskUpdate.completed = test;
+      taskUpdate.completed = status;
       } else  taskUpdate.completed;
-      console.log("SERVICEUPDATE", taskUpdate.completed)
       resolve({
         status: "OK",
         code: 200,
