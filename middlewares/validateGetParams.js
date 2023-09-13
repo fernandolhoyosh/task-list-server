@@ -1,5 +1,4 @@
 const validateGetParams = (req, res, next) => {
-    console.log("PARAMS DESDE MIDDLE GET",req.params)
     const getParams = ['completed','pending','all'];
     const param = req.params.key;
 
