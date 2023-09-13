@@ -1,26 +1,42 @@
 ### Ruta para mostrar todas las tareas guardadas
 
-GET http://localhost:3000/tasks/all
+GET http://localhost:3000/tasks/show/all
+
+
 
 ### Ruta para mostrar las tareas completadas
 
-GET http://localhost:3000/tasks/completed
+GET http://localhost:3000/tasks/show/completed
+
+
 
 ### Ruta para mostrar las tareas pendientes
 
-GET http://localhost:3000/tasks/pending
+GET http://localhost:3000/tasks/show/pending
 
-### Ruta para crear una tarea en la lista
-### añadir parametro nombre de tarea para guardar
+
+
+### Ruta para crear una tarea en la lista atraves de body params con JSON
+### estructura JSON = {"description":"TASK_NAME"}
 
 POST http://localhost:3000/tasks/add
+
+
 
 ### Ruta para eliminar una tarea existente en la lista por ID
 ### añadir parametro id a eliminar
 
 DELETE http://localhost:3000/tasks/delete/
 
-### Ruta para actualizar el nombre y el estado de una tarea existente de la lista por ID
-### query params [name, completed] para actualizar nombre de tarea y estado
 
-PUT http://localhost:3000/tasks/update/1?name=task1&completed=false
+
+### Ruta para actualizar el nombre y el estado de una tarea existente de la lista con envio de JSON body params e indicando el id de la tarea en la URL
+### estructura JSON = 
+    {"description": "NEW_TASK_NAME"} o {"completed": Boolean}
+
+    {
+        "description": "NEW_TASK_NAME",
+        "completed": Boolean (false or true)
+    }
+
+PUT http://localhost:3000/tasks/update/1
