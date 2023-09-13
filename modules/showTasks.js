@@ -1,15 +1,15 @@
-const tasksCompleted = (taskList) => {
-    const tasks = taskList.filter((task) => task.completed);
-    return tasks;
+const showTasks = (taskList, param) => {
+    if (param === 'completed') {
+        const tasks = taskList.filter((task) => task.completed);
+        return tasks;
+    }
+    if (param === 'pending') {
+        const tasks = taskList.filter((task) => !task.completed);
+        return tasks;
+    }
+    if (param === 'all') {
+        return taskList;
+    }
 }
 
-const tasksPending = (taskList) => {
-    const tasks = taskList.filter((task) => !task.completed);
-    return tasks;
-}
-
-const showTasks = () => {
-
-}
-
-module.exports = {tasksCompleted, tasksPending};
+module.exports = {showTasks};
