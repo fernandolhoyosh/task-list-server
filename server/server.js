@@ -1,6 +1,7 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT;
 
 /* const morgan = require('morgan'); */
 const path = require('node:path');
@@ -26,6 +27,6 @@ app.use((req, res) => {
     res.status(404).json({status:"error",code:404, message:"resource not found"});
 })
 
-app.listen(port, ()=> {
-    console.log(`Server online on port:${port}`)
+app.listen(PORT, ()=> {
+    console.log(`Server online on port:${PORT}`)
 });
