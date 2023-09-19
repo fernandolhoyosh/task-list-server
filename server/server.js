@@ -7,6 +7,7 @@ const PORT = process.env.PORT;
 const path = require('node:path');
 
 const {httpMethods} = require(path.join(__dirname,'..','middlewares','httpMethods.js'));
+const loginRouter = require('../routers/auth-router');
 const listViewRouter = require('../routers/list-view-router');
 const listEditRouter = require('../routers/list-edit-router');
 
@@ -15,6 +16,7 @@ const listEditRouter = require('../routers/list-edit-router');
 
 app.use(httpMethods);  // middleware para controlar metodos http validos en el server
 app.use(express.json());
+app.use('/', loginRouter);
 app.use('/tasks', listViewRouter);
 app.use('/tasks', listEditRouter);
 
