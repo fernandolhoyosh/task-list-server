@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const users = require('../data/users');
 const {loginUser} = require('../middlewares/auth/loginUser');
 const {validateToken} = require('../middlewares/auth/validateToken');
 

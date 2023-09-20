@@ -4,14 +4,16 @@ const router = express.Router();
 //Importo la lista de tareas
 const taskList = require("../data/tasks");
 
-// Importo middleware de validacion de errores para metodos POST y PUT
+// Importo middlewares de validacion de errores para metodos POST,PUT y validate Token
 const {validateErrors} = require("../middlewares/validateErrors");
+const {validateToken} = require("../middlewares/auth/validateToken");
 
 // Importo modulos para añadir, eliminar y actualizar tareas
 const {addTask} = require("../modules/addTask");
 const {deleteTask} = require("../modules/deleteTask");
 const {updateTask} = require('../modules/updateTask');
 
+/* router.use(validateToken); */
 
 // Defino las rutas
 
