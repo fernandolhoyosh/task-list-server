@@ -9,11 +9,11 @@ router.post('/login', loginUser, (req, res) => {
     res.status(201).json({token});
 });
 
-router.get('/ruta-protegida', validateToken, (req, res) => {
+router.post('/create-users', validateToken, (req, res) => {
     const userRol = req.headers.rol;
   
     if (userRol === 'admin') {
-      res.status(200).send("ACCESO CORRECTO");
+      res.status(200).send(`Access granted, welcome ${req.headers.username}`);
     } else {
       res.status(401).json({ error: "Access not allowed" });
     }

@@ -13,7 +13,7 @@ const {addTask} = require("../modules/addTask");
 const {deleteTask} = require("../modules/deleteTask");
 const {updateTask} = require('../modules/updateTask');
 
-/* router.use(validateToken); */
+router.use(validateToken);
 
 // Defino las rutas
 
