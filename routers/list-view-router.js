@@ -3,27 +3,32 @@ const router = express.Router();
 
 const taskList = require('../data/tasks');
 
-const {validateGetParams} = require('../middlewares/validateGetParams');
+const {validateTaskId} = require('../middlewares/validateGetParams');
 const {validateToken} = require("../middlewares/auth/validateToken");
 
 const {showTasks} = require('../modules/showTasks');
 
 router.use(validateToken);
 
-router.get('/show/:key', validateGetParams, (req, res) => {
-    const userRol = req.headers.rol;
-    
-    if (userRol === 'admin' || userRol === 'user') {
-        const parameter = req.params.key;
-        console.log('Sending tasks to the client');
-        res.status(200).json(showTasks(taskList, parameter));
-    } else {    
-        res.status(401).json({
-            status: "Unauthorized",
-            code: 401,
-            error: "Access not allowed"
-        });
-    }
+//Endpoint para mostrar al usuario todas las tareas
+router.get('/show/all', (req, res) => {
+    res.status(200).json(showTasks(taskList, 'all'));
+});
+
+//Endpoint para mostrar al usuario las tareas completadas
+router.get('/show/completed', (req, res) => {
+    res.status(200).json(showTasks(taskList, 'completed'));
+});
+
+//Endpoint para mostrar al usuario las tareas pendientes
+router.get('/show/pending', (req, res) => {
+    res.status(200).json(showTasks(taskList, 'pending'));
+});
+
+//Endpoint para mostrar una sola tarea deseada
+router.get('/show/id/:id', validateTaskId, (req, res) => {
+    const task = req.taskFound;
+    res.status(200).json({status: "OK", task: task});
 });
 
 module.exports = router;
